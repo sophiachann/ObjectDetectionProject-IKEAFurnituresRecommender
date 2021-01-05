@@ -12,5 +12,5 @@
 <li>downloadOI.py is a slightly modified downloader script from LearnOpenCV which downloads only certain classes of images from Open Images, example:</li>
 </ul>
 
-<code># Download all Coffeemaker images for train & test & validation</code>
+<code># Download all Coffeemaker images for train & test & validation</code></br>
 <code>!python3 downloadOI.py --classes 'Bed, Cabinetry, Chair, Couch, Lamp, Table' --dataset train, validation, test</code>
