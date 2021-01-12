@@ -23,10 +23,10 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
 - Made iDECOR available across 6 furniture products, and will expand to more brands/ categories with API support in the future.
 
 
-#### Table of Contents
+## Table of Contents
 - Data Collection
 - Data Preprocessing
-- Architecture
+- System Architecture
 - Modeling
   - Object Detection: Detectron2 & Faster R-CNN
   - Similarity Detection: VGG16 vs IncepctionV3
@@ -35,31 +35,36 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
   - Streamlit
 - References
 
+### Prerequisites 
+- CPU
+- GPU x 1
 
-#### Project Overview 
-<p>iDECOR is a customized solution for furniture shoppers by wrapping furniture detection and recommendation system into a single, seamless process on Streamlit. This product leverages two deep learning technologies - 1) Detectron2 developed by Facebook to detect every possible furniture item in the user's uploaded image, and 2) VGG16 model to help narrow down most similar items to the detected item in terms of visual cues, and return them with top 5 items from our furniture product catalogue, in order to drive conversions to sales of furniture retailers by improving onsite recommendations. iDECOR is made available across six furniture products as the first step, and will expand to more brands/categories with API support in the future.</p>
-
-#### Business Objectives
-<li>To drive IKEA's (or other furntiure e-commerce stores) sales by providing better onsite recommendations. </li>
-
-#### Prerequisites
-1. CPU
-2. GPU x 1
-
-#### Installation
-1. Detectron2 Library
-- Built on PyTorch
-- NVIDIA GPU requirement
-
-2. Similarity Detection
+### Installation
+- Detectron2 Library
+	- Built on PyTorch
+	- NVIDIA GPU required
+- Similarity Detection
 
 
-#### Data Collection
-1. Bonn Furniture Style Dataset:  Contains 90000+ furniture images with style labelled by interior design professionals. In the dataset, there are 6 different furniture types. The furniture in the dataset is categorized into beds, chairs, dressers, lamps, sofas and tables. [1]
+## Data Collection
 
-2. Open Images Dataset V6: A dataset of ~9M images annotated with image-level labels, object bounding boxes, object segmentation masks, visual relationships, and localized narratives. [2]
+01. Annotated Furniture Images
+	- Used in **Object Detection Model** training
+	- Data Source: [Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
+	- Obtained around 10,000 images across 6 categories
+	- Images annotated with image-level labels, object bounding boxes
 
-3. IKEA Product Catalogue Dataset: Web-scraped 1000+ products directly from IKEA site for recommendations to user later. [3]
+02. Style-labelled Furniture Images
+	- Used in **Similarity Detection Model** training
+	- Data Source: [Bonn Furniture Style Dataset](https://cvml.comp.nus.edu.sg/furniture/index.html)
+	- Obtained around 13,000 images across 6 categories and 15 styles
+	- Style labelled by interior design professionals
+
+03. IKEA Product Catalogue Dataset
+	- Used in **Recommendation**
+	- Data Source: [IKEA Hong Kong](https://www.ikea.com.hk/en)
+	- Web-scraped around 1,400 products in any category
+
 
 
 #### Data Preprocessing:
