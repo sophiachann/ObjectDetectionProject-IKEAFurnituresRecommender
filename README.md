@@ -40,14 +40,12 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
 - System Architecture
 - Data Collection
 - Data Preprocessing
-- Modeling
+- Modelling
   - Object Detection: Detectron2 & Faster R-CNN
-  - Similarity Detection: VGG16 vs IncepctionV3
+  - Similarity Detection: VGG16 vs InceptionV3
 - Evaluation
 - Deployment
   - Streamlit
-- References
-
 
 ## System Archirecture
 The flowchart shows 5 main stages during product development with the tools and technologies used.
