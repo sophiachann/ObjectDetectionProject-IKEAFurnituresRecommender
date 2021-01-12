@@ -38,9 +38,9 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
 - `load_similarity.py` (TBC)
 
 ## Table of Contents
+- System Architecture
 - Data Collection
 - Data Preprocessing
-- System Architecture
 - Modeling
   - Object Detection: Detectron2 & Faster R-CNN
   - Similarity Detection: VGG16 vs IncepctionV3
@@ -49,40 +49,39 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
   - Streamlit
 - References
 
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/sys-architecture2.png" width="800"/>
+
+This flowchart shows 5 main stages during product development with the tools and technologies used.
+
 ## Data Collection
-- Annotated Furniture Images
+1. Annotated Furniture Images
 	- Used in **Object Detection Model** training
 	- Data Source: [Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
 	- Obtained around 10,000 images across 6 categories
 	- Images annotated with image-level labels, object bounding boxes
 
-- Style-labelled Furniture Images
+2. Style-labelled Furniture Images
 	- Used in **Similarity Detection Model** training
 	- Data Source: [Bonn Furniture Style Dataset](https://cvml.comp.nus.edu.sg/furniture/index.html)
 	- Obtained around 13,000 images across 6 categories and 15 styles
 	- Style labelled by interior design professionals
 
-- IKEA Product Catalogue Dataset
+3. IKEA Product Catalogue Dataset
 	- Used in **Recommendation**
 	- Data Source: [IKEA Hong Kong](https://www.ikea.com.hk/en)
 	- Web-scraped around 1,400 products in any category
 
 ## Data Preprocessing
-- Balancing Dataset
+
+- Balancing categories in dataset
 - Detectron2 Formatting with Annotations
-- Mutli-label Binarizers
+- Mutli-label Binarizers: Encoding multiple labels per image instance
 - Image Resizing
 - Dropping Duplicates
 - Image Augmentation
 
-## System Architecture
+We also took advantage of the high computational power of Google Colab and Google Cloud Platform (GCP) to help proceeding to model training.
 
-<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/sys-architecture2.png" width="800"/>
-
-This flowchart shows five main stages during the whole development of our product, with different focus, tools and technologies we have used within which we will explain further.
-
-1. Data Acquisition
-- Collected 3 types of datasets for training of both Detectron2 and VGG16 models, and for recommendations as feedback, as mentioned in the above section.
 
 2. Data Preprocessing
 - Took advantage of the high computational power of Google Colab and Google Cloud Platform (GCP) to help filter to desired categories, annotate bouding box coordinates, resize images, encode multiple labels per instance, and augmentate the images, for model training.
@@ -96,6 +95,7 @@ This flowchart shows five main stages during the whole development of our produc
 - 
 
 
+-----
 #### Prerequisites 
 - CPU
 - GPU x 1
