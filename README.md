@@ -35,7 +35,6 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
 - `open-images` contains the codes to download and annotate images downloaded from ‘Open Images Dataset V6’
 	- save annotation files here to run the program: https://drive.google.com/file/d/11dKuACP-K8PWYrQX-2br3Xj83ryQKbt4/view?usp=sharing
 - `iDECOR.pdf` is a powerpoint which illustrates the complete framework of this project. 
-- `load_similarity.py` (TBC)
 
 ## Table of Contents
 - System Architecture
@@ -113,7 +112,7 @@ Different number of blocks and dense layers are freezed to experiment on the bes
 
 After obtaining desgin feature vectors from last model, it will then query the feature index libraries using cosine similarity as the similarity search metrics. 
 
-Top 5 furnitures with the closest Euclidean distances are returned as the recommended furnitures.
+Top 5 furnitures with the closest distances are returned as the recommended furnitures.
 
 ## Evaluation
 
@@ -127,11 +126,9 @@ Top 5 furnitures with the closest Euclidean distances are returned as the recomm
 
 ## Deployment
 
-To make iDECOR an interactive experience online, we created a data application using Streamlit framework. It takes few lines of code to get started, is very intuitive to use, allowing us to prototype a beautiful machine learning application very efficiently.
-
 <img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/streamlit.png" width="800"/>
 
-
+To make iDECOR an interactive experience online, we created a data application using Streamlit framework. It takes few lines of code to get started, is very intuitive to use, allowing us to prototype a beautiful machine learning application very efficiently.
 
 -----
 #### Prerequisites 
