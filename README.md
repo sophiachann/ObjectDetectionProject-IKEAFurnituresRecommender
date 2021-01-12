@@ -19,7 +19,7 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
 
 - Leveraged 2 Deep Learning technologies: 
 	- [Detectron2](https://ai.facebook.com/tools/detectron2/) (developed by Facebook AI): Detect every furniture item in user's uploaded image
-	- VGG16 model: Detect furniture features and generate vector representations for respective furniture items
+	- VGG16 model: Detect design features and generate vector representations for respective furniture items
 
 - Returned users with 5 most-similar furniture items, from product catalogue web-scraped from [IKEA Hong Kong](https://www.ikea.com.hk/en) using Selenium
 
@@ -53,7 +53,7 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
 ## System Archirecture
 The flowchart shows 5 main stages during product development with the tools and technologies used.
 
-<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/sys-architecture2.png" width="800"/>
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/sys-architecture.png" width="800"/>
 
 ## Data Collection
 3 datasets are acquired for this project via API, direct download and web scraping respectively.
@@ -87,13 +87,49 @@ We executed some common pre-processing steps, and handle special cases at a late
 We also took advantage of the high computational power of Google Colab and Google Cloud Platform (GCP) to help proceeding to model training.
 
 ## Model Engineering
+**Object Detection**
 
+Detectron2 was selected to perform Object Detection in this product, due to its modular design with numerous pre-trained models built in, that we could be adopt transfer learning more flexibly.
 
-- Prepare the codes as the skeleton to train and make inference on the models.
-- Built the configurations crucial for the training of Detectron2 model using built-in DefaultTrainer with passing annotation dicts and labelled images, and trained it using Pytorch.
-- Compared similarity model between VGG16 and InceptionV3 using transfer learning and established our final model with VGG16 upon Keras and Tensorflow.
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model1-structure.png" width="800"/>
+
+Faster R-CNN is a Region Proposal Network (RPN) introduced in object detection network to hypothesize object locations and classify object categories in images. 
+
+It performed shorter inference time and fewer training memory when compared to Mask R-CNN, and higher accuracy compared to Fast R-CNN.
+
+**Similarity Detection**
+
+We applied transfer learning of VGG16 and InceptionV3 as Similarity Detection models, using Tensorflow and Keras, to generate vectors that encode the design feature of the furniture detected.
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model2-structure.png" width="800"/>
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model2-structure2.png" width="800"/>
+
+Different number of blocks and dense layers are freezed to experiment on the best accuracy.
+
+**Recommender**
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/recommender.png" width="800"/>
+
+After obtaining desgin feature vectors from last model, it will then query the feature index libraries using cosine similarity as the similarity search metrics. 
+
+Top 5 furnitures with the closest Euclidean distances are returned as the recommended furnitures.
 
 ## Evaluation
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model-eva-detectron2.png" width="800"/>
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model-eva-vgg-inception.png" width="800"/>
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model-eva-visual1.png" width="800"/>
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/model-eva-visual2.png" width="800"/>
+
+## Deployment
+
+To make iDECOR an interactive experience online, we created a data application using Streamlit framework. It takes few lines of code to get started, is very intuitive to use, allowing us to prototype a beautiful machine learning application very efficiently.
+
+<img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/streamlit.png" width="800"/>
 
 
 
@@ -106,11 +142,3 @@ We also took advantage of the high computational power of Google Colab and Googl
 - Detectron2 Library
 	- Built on PyTorch
 	- NVIDIA GPU required
-- Similarity Detection
-
-
-#### References:
-1. Bonn Furniture Style Dataset: https://cvml.comp.nus.edu.sg/furniture/index.html
-2. Open Images Dataset V6: https://storage.googleapis.com/openimages/web/index.html
-3. IKEA site: https://www.ikea.com.hk/en
-
