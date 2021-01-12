@@ -49,11 +49,15 @@ This project is to drive conversions-to-sales of IKEA's and other furniture ecom
   - Streamlit
 - References
 
+
+## System Archirecture
+The flowchart shows 5 main stages during product development with the tools and technologies used.
+
 <img src="https://github.com/sophiachann/ObjectDetectionProject-FurnitureRecommender/blob/main/img/sys-architecture2.png" width="800"/>
 
-This flowchart shows 5 main stages during product development with the tools and technologies used.
-
 ## Data Collection
+3 datasets are acquired for this project via API, direct download and web scraping respectively.
+
 1. Annotated Furniture Images
 	- Used in **Object Detection Model** training
 	- Data Source: [Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
@@ -67,13 +71,13 @@ This flowchart shows 5 main stages during product development with the tools and
 	- Style labelled by interior design professionals
 
 3. IKEA Product Catalogue Dataset
-	- Used in **Recommendation**
+	- Used as **Recommendation Source**
 	- Data Source: [IKEA Hong Kong](https://www.ikea.com.hk/en)
 	- Web-scraped around 1,400 products in any category
 
 ## Data Preprocessing
-
-- Balancing categories in dataset
+We executed some common pre-processing steps, and handle special cases at a later point to improve our results. Here are some major techniques we used in data cleaning:
+- Balancing Categories in dataset
 - Detectron2 Formatting with Annotations
 - Mutli-label Binarizers: Encoding multiple labels per image instance
 - Image Resizing
@@ -82,17 +86,15 @@ This flowchart shows 5 main stages during product development with the tools and
 
 We also took advantage of the high computational power of Google Colab and Google Cloud Platform (GCP) to help proceeding to model training.
 
+## Model Engineering
 
-2. Data Preprocessing
-- Took advantage of the high computational power of Google Colab and Google Cloud Platform (GCP) to help filter to desired categories, annotate bouding box coordinates, resize images, encode multiple labels per instance, and augmentate the images, for model training.
 
-3. Model Engineering
 - Prepare the codes as the skeleton to train and make inference on the models.
 - Built the configurations crucial for the training of Detectron2 model using built-in DefaultTrainer with passing annotation dicts and labelled images, and trained it using Pytorch.
 - Compared similarity model between VGG16 and InceptionV3 using transfer learning and established our final model with VGG16 upon Keras and Tensorflow.
 
-4. Evaluation
-- 
+## Evaluation
+
 
 
 -----
