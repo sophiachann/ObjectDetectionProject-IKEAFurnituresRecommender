@@ -4,4 +4,3 @@
 
 #### What does iDECOR do?
 <p>After uploading a room scene image, IDECOR returns users with similar-styled furnitures in favour from IKEA dataset.</p>
-
